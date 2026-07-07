@@ -428,6 +428,75 @@
       display: none;
     }
 
+    /* Mobile Audio Overlay */
+    #audioOverlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 20px;
+      backdrop-filter: blur(5px);
+    }
+
+    #audioOverlay.show {
+      display: flex;
+    }
+
+    #audioOverlay .overlay-content {
+      background: #1a2a4a;
+      padding: 40px 30px;
+      border-radius: 24px;
+      max-width: 320px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border: 2px solid #f7d44a;
+    }
+
+    #audioOverlay .overlay-icon {
+      font-size: 4rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    #audioOverlay h3 {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    #audioOverlay p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+
+    #audioOverlay .enable-btn {
+      margin-top: 20px;
+      background: #f7d44a;
+      border: none;
+      padding: 14px 40px;
+      border-radius: 30px;
+      font-weight: 700;
+      color: #1a2a4a;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 4px 0 #c9a820;
+      touch-action: manipulation;
+    }
+
+    #audioOverlay .enable-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #c9a820;
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 8px;
@@ -513,6 +582,23 @@
         font-size: 0.5rem;
         padding: 1px 6px;
       }
+      #audioOverlay .overlay-content {
+        padding: 30px 20px;
+        margin: 20px;
+      }
+      #audioOverlay .overlay-icon {
+        font-size: 3rem;
+      }
+      #audioOverlay h3 {
+        font-size: 1.1rem;
+      }
+      #audioOverlay p {
+        font-size: 0.8rem;
+      }
+      #audioOverlay .enable-btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+      }
     }
 
     @media (max-width: 400px) {
@@ -563,6 +649,16 @@
   </style>
 </head>
 <body>
+<!-- Mobile Audio Overlay -->
+<div id="audioOverlay" class="show">
+  <div class="overlay-content">
+    <span class="overlay-icon">🔊</span>
+    <h3>Tap to Enable Audio</h3>
+    <p>Your browser requires a tap to activate text-to-speech. Tap the button below to enable audio.</p>
+    <button class="enable-btn" onclick="enableAudioAndClose()">🔊 Enable Audio</button>
+  </div>
+</div>
+
 <div class="book">
   <div class="book-header">
     <h1>📖 IDIOMS VOL.1</h1>
@@ -706,6 +802,7 @@
     const nextBtn = document.getElementById('nextBtn');
     const jumpInput = document.getElementById('pageJump');
     const jumpBtn = document.getElementById('jumpBtn');
+    const audioOverlay = document.getElementById('audioOverlay');
 
     let currentPage = 0;
     let zoomLevel = 1;
@@ -729,6 +826,82 @@
     let touchStartPanY = 0;
     let isTouching = false;
     let touchZoomStart = 0;
+    let audioEnabled = false;
+    let isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile/i.test(navigator.userAgent);
+
+    // ----- MOBILE AUDIO FIXES -----
+
+    // Global function to enable audio and close overlay
+    window.enableAudioAndClose = function() {
+      enableMobileAudio();
+      if (audioOverlay) {
+        audioOverlay.classList.remove('show');
+        audioOverlay.style.display = 'none';
+      }
+      audioEnabled = true;
+      
+      // Test speech to confirm it works
+      try {
+        const testMsg = new SpeechSynthesisUtterance('Audio enabled');
+        testMsg.lang = 'en-US';
+        testMsg.rate = 0.5;
+        testMsg.volume = 0.1;
+        speechSynth.speak(testMsg);
+        setTimeout(() => speechSynth.cancel(), 300);
+      } catch(e) {
+        console.log('Test speech error:', e);
+      }
+    };
+
+    function enableMobileAudio() {
+      try {
+        // Resume AudioContext for mobile
+        if (window.AudioContext || window.webkitAudioContext) {
+          const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+        }
+        
+        // iOS Safari specific fix
+        if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+          // Force a dummy speech to initialize
+          const dummy = new SpeechSynthesisUtterance(' ');
+          dummy.volume = 0;
+          speechSynth.speak(dummy);
+          setTimeout(() => speechSynth.cancel(), 100);
+        }
+      } catch(e) {
+        console.log('Audio activation error:', e);
+      }
+    }
+
+    // Check if mobile and show overlay
+    function checkMobileAudio() {
+      if (isMobile) {
+        // Show overlay if speech synthesis isn't ready
+        if (audioOverlay) {
+          audioOverlay.classList.add('show');
+          audioOverlay.style.display = 'flex';
+        }
+      }
+    }
+
+    // Auto-activate on any user interaction (as backup)
+    document.addEventListener('touchstart', function() {
+      if (!audioEnabled) {
+        enableMobileAudio();
+        // Don't auto-close overlay, let user click the button
+      }
+    }, { passive: true });
+
+    document.addEventListener('click', function() {
+      if (!audioEnabled) {
+        enableMobileAudio();
+      }
+    }, { passive: true });
+
+    // ----- END MOBILE AUDIO FIXES -----
 
     function loadVoices() {
       return new Promise((resolve) => {
@@ -915,6 +1088,17 @@
       const btn = document.getElementById('audioBtn');
       if (!btn) return;
       
+      // Try to enable audio on mobile if not enabled
+      if (isMobile && !audioEnabled) {
+        enableMobileAudio();
+        // Show overlay if still not enabled
+        if (audioOverlay) {
+          audioOverlay.classList.add('show');
+          audioOverlay.style.display = 'flex';
+          return;
+        }
+      }
+      
       if (isPlaying) {
         stopSpeech();
         btn.textContent = '🔊 Read ↵';
@@ -932,6 +1116,11 @@
         return;
       }
       
+      // Ensure audio is enabled on mobile
+      if (isMobile) {
+        enableMobileAudio();
+      }
+      
       stopSpeech();
       
       const text = currentText || 'No text available.';
@@ -939,6 +1128,7 @@
       currentUtterance.lang = 'en-US';
       currentUtterance.rate = 0.85;
       currentUtterance.pitch = 1;
+      currentUtterance.volume = 1;
       
       const voice = availableVoices.find(v => v.name === selectedVoiceName) || getPreferredVoice();
       if (voice) {
@@ -954,12 +1144,28 @@
         }
       };
       
-      currentUtterance.onerror = function() {
+      currentUtterance.onerror = function(event) {
+        console.log('Speech error:', event);
         isPlaying = false;
         const btn = document.getElementById('audioBtn');
         if (btn) {
           btn.textContent = '🔊 Read ↵';
           btn.classList.remove('playing');
+        }
+        
+        // Retry on mobile if first attempt fails
+        if (isMobile && (event.error === 'not-allowed' || event.error === 'synthesis-unavailable')) {
+          setTimeout(() => {
+            if (!isPlaying) {
+              const retryBtn = document.getElementById('audioBtn');
+              if (retryBtn && !retryBtn.classList.contains('playing')) {
+                if (audioOverlay) {
+                  audioOverlay.classList.add('show');
+                  audioOverlay.style.display = 'flex';
+                }
+              }
+            }
+          }, 500);
         }
       };
       
@@ -1041,6 +1247,7 @@
     window.resetZoom = resetZoom;
     window.toggleAudio = toggleAudio;
     window.changeVoice = changeVoice;
+    window.enableAudioAndClose = enableAudioAndClose;
 
     function goToPage(num) {
       let p = parseInt(num, 10);
@@ -1105,6 +1312,8 @@
     // Load voices and render
     loadVoices().then(() => {
       renderPage(0);
+      // Check for mobile after page loads
+      setTimeout(checkMobileAudio, 500);
     });
   })();
 </script>
