@@ -77,6 +77,17 @@
         0 6px 12px rgba(0,0,0,0.3),
         inset 0 -1px 0 #0b1a2f;
     }
+    .exam-header .progress-badge.welcome-badge {
+      background: linear-gradient(145deg, #2a5a7a, #1a3a5a);
+      color: #f5d742;
+      border-color: #f5d742;
+      box-shadow: 
+        0 6px 0 #0b1a2f,
+        0 8px 16px rgba(0,0,0,0.3),
+        inset 0 -3px 0 #0b1a2f,
+        inset 0 2px 4px rgba(255,255,255,0.1),
+        0 0 15px rgba(245, 215, 66, 0.2);
+    }
 
     .question-card {
       background: #112b44;
@@ -133,10 +144,11 @@
       outline: none;
       transition: all 0.3s;
       text-align: center;
+      box-shadow: 0 4px 0 #0b1a2f, inset 0 2px 4px rgba(255,255,255,0.05);
     }
     .welcome-screen .name-input-group input:focus {
       border-color: #f5d742;
-      box-shadow: 0 0 0 3px #f5d74244;
+      box-shadow: 0 0 0 3px #f5d74244, 0 4px 0 #0b1a2f;
     }
     .welcome-screen .name-input-group input::placeholder {
       color: #6a8aa8;
@@ -161,20 +173,42 @@
       font-size: 1.1rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.1s ease;
       text-align: center;
       touch-action: manipulation;
       user-select: none;
+      position: relative;
+      transform: translateY(-3px);
+      box-shadow: 
+        0 6px 0 #0b1a2f,
+        0 8px 16px rgba(0,0,0,0.3),
+        inset 0 2px 4px rgba(255,255,255,0.05),
+        inset 0 -3px 0 #0b1a2f;
+      border: 1px solid rgba(255,255,255,0.08);
     }
     .welcome-screen .mode-selector .mode-btn:hover {
       background: #1a3a5a;
       border-color: #9b4fd4;
+      transform: translateY(-3px) scale(1.01);
+    }
+    .welcome-screen .mode-selector .mode-btn:active {
+      transform: translateY(2px);
+      box-shadow: 
+        0 2px 0 #0b1a2f,
+        0 4px 8px rgba(0,0,0,0.3),
+        inset 0 1px 2px rgba(255,255,255,0.05),
+        inset 0 -1px 0 #0b1a2f;
     }
     .welcome-screen .mode-selector .mode-btn.active {
       background: #2a5a7a;
       border-color: #f5d742;
       color: #f5d742;
-      box-shadow: 0 0 0 2px #f5d74244;
+      box-shadow: 
+        0 6px 0 #0b1a2f,
+        0 8px 16px rgba(0,0,0,0.3),
+        inset 0 2px 4px rgba(255,255,255,0.1),
+        inset 0 -3px 0 #0b1a2f,
+        0 0 0 2px #f5d74244;
     }
     .welcome-screen .mode-selector .mode-btn .mode-icon {
       display: block;
@@ -234,6 +268,7 @@
       padding: 18px 48px;
     }
     .btn-start:active {
+      transform: translateY(2px);
       box-shadow: 
         0 2px 0 #1a5a2e,
         0 4px 8px rgba(0,0,0,0.3),
@@ -251,6 +286,7 @@
       text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     }
     .btn-success:active {
+      transform: translateY(2px);
       box-shadow: 
         0 2px 0 #1a5a2e,
         0 4px 8px rgba(0,0,0,0.3),
@@ -268,6 +304,7 @@
       text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     }
     .btn-danger:active {
+      transform: translateY(2px);
       box-shadow: 
         0 2px 0 #1a4a6a,
         0 4px 8px rgba(0,0,0,0.3),
@@ -285,6 +322,7 @@
       text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     }
     .btn-warning:active {
+      transform: translateY(2px);
       box-shadow: 
         0 2px 0 #6b4f0a,
         0 4px 8px rgba(0,0,0,0.3),
@@ -302,6 +340,7 @@
       text-shadow: 0 1px 2px rgba(255,255,255,0.3);
     }
     .btn-primary:active {
+      transform: translateY(2px);
       box-shadow: 
         0 2px 0 #a77d1a,
         0 4px 8px rgba(0,0,0,0.3),
@@ -319,6 +358,7 @@
       text-shadow: 0 1px 2px rgba(255,255,255,0.3);
     }
     .btn-secondary:active {
+      transform: translateY(2px);
       box-shadow: 
         0 2px 0 #a77d1a,
         0 4px 8px rgba(0,0,0,0.3),
@@ -344,6 +384,7 @@
       text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     }
     .btn-exam:active {
+      transform: translateY(2px);
       box-shadow: 
         0 2px 0 #1a4a6a,
         0 4px 8px rgba(0,0,0,0.3),
@@ -809,10 +850,64 @@
       transition: 0.2s;
       box-shadow: 0 4px 0 #c9a820;
       touch-action: manipulation;
+      border: 1px solid #e8c83a;
     }
     #audioOverlay .enable-btn:active {
       transform: translateY(4px);
       box-shadow: 0 1px 0 #c9a820;
+    }
+
+    /* ===== REVIEW MODE IDIOM NUMBER ===== */
+    .review-idiom-number {
+      color: #b6d0e8;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 6px;
+      background: #0d233d;
+      padding: 4px 16px;
+      border-radius: 30px;
+      display: inline-block;
+      border: 1px solid #7b2fbe44;
+    }
+
+    /* ===== AUDIO PLAYING LOCK INDICATOR ===== */
+    .audio-playing-indicator {
+      display: none;
+      color: #f5d742;
+      font-size: 0.8rem;
+      background: #0d233d;
+      padding: 2px 14px;
+      border-radius: 30px;
+      border: 1px solid #f5d742;
+      animation: pulse-glow 1s ease-in-out infinite;
+      margin-left: 8px;
+    }
+    .audio-playing-indicator.active {
+      display: inline-block;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 1; box-shadow: 0 0 5px #f5d742; }
+      50% { opacity: 0.6; box-shadow: 0 0 15px #f5d742; }
+    }
+
+    .nav-btn.audio-locked {
+      opacity: 0.4 !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+    }
+
+    /* ===== IMAGE ZOOM - CURSOR STYLES ===== */
+    .image-wrapper img.zoomable {
+      cursor: grab;
+    }
+    .image-wrapper img.zoomable:active {
+      cursor: grabbing;
+    }
+    .image-wrapper img.zoomed {
+      cursor: grab;
+    }
+    .image-wrapper img.zoomed:active {
+      cursor: grabbing;
     }
 
     /* ===== RESPONSIVE ===== */
@@ -864,6 +959,20 @@
         min-width: 100px;
         padding: 12px 16px;
         font-size: 1rem;
+        box-shadow: 
+          0 4px 0 #0b1a2f,
+          0 6px 12px rgba(0,0,0,0.3),
+          inset 0 1px 3px rgba(255,255,255,0.05),
+          inset 0 -2px 0 #0b1a2f;
+        transform: translateY(-2px);
+      }
+      .welcome-screen .mode-selector .mode-btn:active {
+        transform: translateY(2px);
+        box-shadow: 
+          0 2px 0 #0b1a2f,
+          0 3px 6px rgba(0,0,0,0.3),
+          inset 0 1px 2px rgba(255,255,255,0.05),
+          inset 0 -1px 0 #0b1a2f;
       }
       .welcome-screen .mode-selector .mode-btn .mode-icon {
         font-size: 1.4rem;
@@ -886,6 +995,10 @@
       }
       .performance-rating .rating-label {
         font-size: 1.2rem;
+      }
+      .audio-playing-indicator {
+        font-size: 0.7rem;
+        padding: 1px 10px;
       }
     }
 
@@ -970,6 +1083,20 @@
         max-width: 280px;
         padding: 10px 14px;
         font-size: 0.9rem;
+        box-shadow: 
+          0 3px 0 #0b1a2f,
+          0 4px 8px rgba(0,0,0,0.3),
+          inset 0 1px 2px rgba(255,255,255,0.05),
+          inset 0 -2px 0 #0b1a2f;
+        transform: translateY(-1.5px);
+      }
+      .welcome-screen .mode-selector .mode-btn:active {
+        transform: translateY(2px);
+        box-shadow: 
+          0 1px 0 #0b1a2f,
+          0 2px 4px rgba(0,0,0,0.3),
+          inset 0 1px 2px rgba(255,255,255,0.05),
+          inset 0 -1px 0 #0b1a2f;
       }
       .welcome-screen .mode-selector .mode-btn .mode-icon {
         font-size: 1.2rem;
@@ -1053,6 +1180,11 @@
         padding: 12px 30px;
         font-size: 1rem;
       }
+      .audio-playing-indicator {
+        font-size: 0.6rem;
+        padding: 1px 8px;
+        margin-left: 4px;
+      }
     }
   </style>
 </head>
@@ -1062,7 +1194,7 @@
   <!-- HEADER -->
   <div class="exam-header">
     <h1>📘 IDIOM·BOOK·VOL.1</h1>
-    <div class="progress-badge" id="progressBadge">1 / 50</div>
+    <div class="progress-badge welcome-badge" id="progressBadge">📚 Ready</div>
   </div>
 
   <!-- ===== WELCOME SCREEN ===== -->
@@ -1209,14 +1341,6 @@
       { id: 50, phrase: "CRY OVER SPILLED MILK", meaning: "Complain about something that cannot be undone.", filename: "50. CRY OVER SPILLED MILK.png", context: "In a sentence: 'There's no point crying over spilled milk; what's done is done.' The context shows that complaining about something in the past won't change it." }
     ];
 
-    // ===== IMAGE NAMES FOR REVIEW MODE =====
-    const imageNames = idioms.map(i => i.filename);
-
-    // ===== TEST MODE TEXT FOR AUDIO =====
-    const idiomTexts = idioms.map(i => 
-      `${i.phrase}. Meaning: ${i.meaning}. Example: ${i.context.replace('In a sentence: ', '')}`
-    );
-
     // ===== DOM REFS =====
     const welcomeScreen = document.getElementById('welcomeScreen');
     const reviewContainer = document.getElementById('reviewContainer');
@@ -1280,7 +1404,6 @@
     // ===== MOBILE AUDIO FUNCTIONS =====
     function enableMobileAudio() {
       try {
-        // Try to resume AudioContext if it exists
         if (window.AudioContext || window.webkitAudioContext) {
           const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
           if (audioCtx.state === 'suspended') {
@@ -1288,7 +1411,6 @@
           }
         }
         
-        // For iOS, do a silent speech to activate
         if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
           const dummy = new SpeechSynthesisUtterance(' ');
           dummy.volume = 0;
@@ -1315,14 +1437,12 @@
       if (isMobile && audioOverlay) {
         audioOverlay.classList.add('show');
         audioOverlay.style.display = 'flex';
-        // Try auto-enable after a small delay
         setTimeout(() => {
           enableMobileAudio();
         }, 300);
       }
     }
 
-    // Auto-enable audio on any user interaction
     document.addEventListener('touchstart', function() {
       if (!audioEnabled) {
         enableMobileAudio();
@@ -1413,7 +1533,6 @@
       userName = name;
       welcomeScreen.style.display = 'none';
 
-      // Enable audio on start
       enableMobileAudio();
 
       if (selectedMode === 'review') {
@@ -1441,8 +1560,11 @@
       }
     });
 
-    // ===== REVIEW MODE (FLIPBOOK) =====
+    // ===== REVIEW MODE (FLIPBOOK) - ALWAYS IN ORDER =====
     function initReviewMode() {
+      // Reset to page 0 each time review mode starts
+      currentPage = 0;
+      
       const reviewBookContent = document.getElementById('reviewBookContent');
       reviewBookContent.innerHTML = `
         <style>
@@ -1498,8 +1620,15 @@
             -webkit-user-drag: none;
             transform-origin: center center;
             -webkit-tap-highlight-color: transparent;
+            cursor: grab;
           }
           .book-inner .image-wrapper img:active {
+            cursor: grabbing;
+          }
+          .book-inner .image-wrapper img.zoomed {
+            cursor: grab;
+          }
+          .book-inner .image-wrapper img.zoomed:active {
             cursor: grabbing;
           }
           .book-inner .placeholder {
@@ -1531,6 +1660,35 @@
             border-radius: 30px;
             display: inline-block;
             box-shadow: inset 0 1px 3px rgba(255,255,255,0.3);
+          }
+          .book-inner .review-idiom-number {
+            color: #b6d0e8;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 6px;
+            background: #0d233d;
+            padding: 4px 16px;
+            border-radius: 30px;
+            display: inline-block;
+            border: 1px solid #7b2fbe44;
+          }
+          .book-inner .audio-playing-indicator {
+            display: none;
+            color: #f5d742;
+            font-size: 0.75rem;
+            background: #0d233d;
+            padding: 2px 14px;
+            border-radius: 30px;
+            border: 1px solid #f5d742;
+            animation: pulse-glow 1s ease-in-out infinite;
+            margin-left: 8px;
+          }
+          .book-inner .audio-playing-indicator.active {
+            display: inline-block;
+          }
+          @keyframes pulse-glow {
+            0%, 100% { opacity: 1; box-shadow: 0 0 5px #f5d742; }
+            50% { opacity: 0.6; box-shadow: 0 0 15px #f5d742; }
           }
           .book-inner .controls-row {
             display: flex;
@@ -1829,17 +1987,19 @@
         <div class="book-inner" id="bookInner">
           <div class="image-page" id="imagePage">
             <div class="image-wrapper" id="imageWrapper">
-              <img id="reviewImage" src="" alt="Idiom image" style="max-width:100%; max-height:380px; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.15); border:1px solid #dac8b8; object-fit:contain; background:#f5ede4;">
+              <img id="reviewImage" src="" alt="Idiom image" style="max-width:100%; max-height:380px; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.15); border:1px solid #dac8b8; object-fit:contain; background:#f5ede4; cursor:grab;">
               <div class="placeholder" style="display:none;">⚠️ image not found</div>
             </div>
+            <div class="review-idiom-number" id="reviewIdiomNumber">📌 Idiom #1: A BLESSING IN DISGUISE</div>
             <div class="controls-row">
               <button onclick="reviewZoomImage(-0.2)" aria-label="zoom out">➖</button>
               <button onclick="reviewResetZoom()" aria-label="reset zoom">⟲</button>
               <button onclick="reviewZoomImage(0.2)" aria-label="zoom in">➕</button>
               <button class="audio-btn" id="reviewAudioBtn" onclick="reviewToggleAudio()">🔊 Read <span class="enter-hint">↵</span></button>
               <select class="voice-selector" id="reviewVoiceSelector" onchange="reviewChangeVoice(this.value)" aria-label="select voice"></select>
+              <span class="audio-playing-indicator" id="audioPlayingIndicator">🔊 Playing...</span>
             </div>
-            <div class="zoom-hint">👆 tap to zoom · drag to pan · Space/Enter for audio</div>
+            <div class="zoom-hint">🖱️ scroll to zoom · +/- keys · drag to pan · Space/Enter for audio</div>
             <div class="reviewer-footer"><span>Reviewer: CSN - Christopher S. Naputo</span></div>
           </div>
         </div>
@@ -1853,7 +2013,7 @@
           <button class="nav-btn" id="reviewNextBtn">NEXT ▶ <span class="key-hint">→</span></button>
         </div>
         <div class="book-footer-note">
-          <span>✦ tap to zoom · drag to pan · Space/Enter for audio · ← → navigate ✦</span>
+          <span>✦ 🖱️ scroll to zoom · +/- keys · drag to pan · Space/Enter for audio · ← → navigate ✦</span>
         </div>
         <div class="back-to-welcome">
           <button class="btn" id="reviewBackBtn">🔙 Back to Welcome</button>
@@ -1868,17 +2028,89 @@
       const reviewBackBtn = document.getElementById('reviewBackBtn');
       const reviewImage = document.getElementById('reviewImage');
       const reviewWrapper = document.getElementById('imageWrapper');
+      const reviewIdiomNumber = document.getElementById('reviewIdiomNumber');
+      const audioPlayingIndicator = document.getElementById('audioPlayingIndicator');
 
-      currentPage = 0;
       zoomLevel = 1;
       panX = 0;
       panY = 0;
       currentImg = reviewImage;
       currentWrapper = reviewWrapper;
 
+      function updateAudioLockState(playing) {
+        if (reviewPrevBtn) {
+          if (playing) {
+            reviewPrevBtn.classList.add('audio-locked');
+          } else {
+            reviewPrevBtn.classList.remove('audio-locked');
+          }
+        }
+        if (reviewNextBtn) {
+          if (playing) {
+            reviewNextBtn.classList.add('audio-locked');
+          } else {
+            reviewNextBtn.classList.remove('audio-locked');
+          }
+        }
+        if (audioPlayingIndicator) {
+          if (playing) {
+            audioPlayingIndicator.classList.add('active');
+          } else {
+            audioPlayingIndicator.classList.remove('active');
+          }
+        }
+      }
+
+      // ===== MOUSE WHEEL ZOOM =====
+      function handleWheelZoom(e) {
+        if (!currentImg) return;
+        e.preventDefault();
+        const delta = e.deltaY > 0 ? -0.1 : 0.1;
+        zoomLevel = Math.min(Math.max(zoomLevel + delta, 0.3), 4);
+        currentImg.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomLevel})`;
+        currentImg.style.transformOrigin = 'center center';
+        if (zoomLevel > 1) {
+          currentImg.classList.add('zoomed');
+        } else {
+          currentImg.classList.remove('zoomed');
+        }
+      }
+
+      // ===== MOUSE DRAG FOR PAN =====
+      function startDrag(e) {
+        if (!currentImg || zoomLevel <= 1) return;
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        startPanX = panX;
+        startPanY = panY;
+        currentImg.style.cursor = 'grabbing';
+        document.addEventListener('mousemove', onDrag);
+        document.addEventListener('mouseup', endDrag);
+        e.preventDefault();
+      }
+
+      function onDrag(e) {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        panX = startPanX + dx;
+        panY = startPanY + dy;
+        currentImg.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomLevel})`;
+      }
+
+      function endDrag() {
+        isDragging = false;
+        if (currentImg) {
+          currentImg.style.cursor = zoomLevel > 1 ? 'grab' : 'grab';
+        }
+        document.removeEventListener('mousemove', onDrag);
+        document.removeEventListener('mouseup', endDrag);
+      }
+
       function renderReviewPage(index) {
         if (index < 0) index = 0;
-        if (index >= imageNames.length) index = imageNames.length - 1;
+        if (index >= idioms.length) index = idioms.length - 1;
         currentPage = index;
         
         zoomLevel = 1;
@@ -1887,8 +2119,13 @@
         isDragging = false;
         isTouching = false;
 
-        const imgName = imageNames[currentPage] || '';
-        currentText = idiomTexts[currentPage] || 'No text available.';
+        const idiom = idioms[currentPage];
+        const imgName = idiom.filename;
+        currentText = `${idiom.phrase}. Meaning: ${idiom.meaning}. Example: ${idiom.context.replace('In a sentence: ', '')}`;
+        
+        if (reviewIdiomNumber) {
+          reviewIdiomNumber.textContent = `📌 Idiom #${currentPage + 1}: ${idiom.phrase}`;
+        }
 
         const img = document.getElementById('reviewImage');
         if (img) {
@@ -1896,6 +2133,17 @@
           img.alt = imgName;
           img.style.transform = 'translate(0px, 0px) scale(1)';
           img.style.transformOrigin = 'center center';
+          img.classList.remove('zoomed');
+          img.style.cursor = 'grab';
+          
+          // Remove old wheel and mouse listeners
+          img.removeEventListener('wheel', handleWheelZoom);
+          img.removeEventListener('mousedown', startDrag);
+          
+          // Add new listeners
+          img.addEventListener('wheel', handleWheelZoom, { passive: false });
+          img.addEventListener('mousedown', startDrag);
+          
           img.onerror = function() {
             this.style.display = 'none';
             const placeholder = this.nextElementSibling;
@@ -1909,10 +2157,14 @@
         }
 
         document.getElementById('reviewPageJump').value = currentPage + 1;
-        progressBadge.textContent = `${currentPage+1} / ${imageNames.length}`;
+        progressBadge.textContent = `${currentPage+1} / ${idioms.length}`;
 
         reviewPrevBtn.disabled = (currentPage === 0);
-        reviewNextBtn.disabled = (currentPage === imageNames.length - 1);
+        reviewNextBtn.disabled = (currentPage === idioms.length - 1);
+        
+        if (isPlaying) {
+          updateAudioLockState(true);
+        }
 
         setTimeout(populateReviewVoices, 50);
       }
@@ -1938,12 +2190,19 @@
       }
 
       // Review navigation
-      reviewPrevBtn.addEventListener('click', () => { if (currentPage > 0) renderReviewPage(currentPage - 1); });
-      reviewNextBtn.addEventListener('click', () => { if (currentPage < imageNames.length - 1) renderReviewPage(currentPage + 1); });
+      reviewPrevBtn.addEventListener('click', () => { 
+        if (isPlaying) return;
+        if (currentPage > 0) renderReviewPage(currentPage - 1); 
+      });
+      reviewNextBtn.addEventListener('click', () => { 
+        if (isPlaying) return;
+        if (currentPage < idioms.length - 1) renderReviewPage(currentPage + 1); 
+      });
       reviewJumpBtn.addEventListener('click', () => {
+        if (isPlaying) return;
         let p = parseInt(reviewPageJump.value, 10);
         if (isNaN(p)) p = 1;
-        p = Math.min(Math.max(p, 1), imageNames.length);
+        p = Math.min(Math.max(p, 1), idioms.length);
         renderReviewPage(p - 1);
       });
       reviewPageJump.addEventListener('keydown', (e) => {
@@ -1955,185 +2214,7 @@
 
       reviewBackBtn.addEventListener('click', goToWelcome);
 
-      // Review keyboard shortcuts
-      document.addEventListener('keydown', function reviewKeyHandler(e) {
-        if (!reviewContainer.classList.contains('active-content')) return;
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
-        if (e.key === 'ArrowLeft') {
-          e.preventDefault();
-          if (currentPage > 0) renderReviewPage(currentPage - 1);
-        } else if (e.key === 'ArrowRight') {
-          e.preventDefault();
-          if (currentPage < imageNames.length - 1) renderReviewPage(currentPage + 1);
-        } else if (e.key === ' ' || e.key === 'Space' || e.key === 'Enter') {
-          e.preventDefault();
-          reviewToggleAudio();
-        }
-      });
-
-      // Review zoom functions
-      window.reviewZoomImage = function(delta) {
-        if (!currentImg) return;
-        zoomLevel = Math.min(Math.max(zoomLevel + delta, 0.3), 4);
-        currentImg.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomLevel})`;
-        currentImg.style.transformOrigin = 'center center';
-      };
-
-      window.reviewResetZoom = function() {
-        zoomLevel = 1;
-        panX = 0;
-        panY = 0;
-        if (currentImg) {
-          currentImg.style.transform = `translate(0px, 0px) scale(1)`;
-          currentImg.style.transformOrigin = 'center center';
-        }
-      };
-
-      // Review audio - FIXED for mobile
-      window.reviewToggleAudio = function() {
-        const btn = document.getElementById('reviewAudioBtn');
-        if (!btn) return;
-        
-        // Ensure audio is enabled
-        if (isMobile && !audioEnabled) {
-          enableMobileAudio();
-          if (audioOverlay) {
-            audioOverlay.classList.add('show');
-            audioOverlay.style.display = 'flex';
-            return;
-          }
-        }
-        
-        if (isPlaying) {
-          reviewStopSpeech();
-          btn.textContent = '🔊 Read ↵';
-          btn.classList.remove('playing');
-        } else {
-          reviewStartSpeech();
-          btn.textContent = '⏹ Stop ↵';
-          btn.classList.add('playing');
-        }
-      };
-
-      window.reviewChangeVoice = function(voiceName) {
-        selectedVoiceName = voiceName;
-        if (isPlaying) {
-          reviewStopSpeech();
-          setTimeout(reviewStartSpeech, 100);
-        }
-      };
-
-      function reviewStartSpeech() {
-        if (!window.speechSynthesis) {
-          alert('Text-to-speech is not supported in this browser.');
-          return;
-        }
-        
-        // Ensure audio is enabled
-        if (isMobile) {
-          enableMobileAudio();
-        }
-        
-        reviewStopSpeech();
-        
-        const text = currentText || 'No text available.';
-        currentUtterance = new SpeechSynthesisUtterance(text);
-        currentUtterance.lang = 'en-US';
-        currentUtterance.rate = 0.85;
-        currentUtterance.pitch = 1;
-        currentUtterance.volume = 1;
-        
-        const voice = availableVoices.find(v => v.name === selectedVoiceName) || availableVoices[0];
-        if (voice) currentUtterance.voice = voice;
-        
-        currentUtterance.onend = function() {
-          isPlaying = false;
-          const btn = document.getElementById('reviewAudioBtn');
-          if (btn) { btn.textContent = '🔊 Read ↵'; btn.classList.remove('playing'); }
-        };
-        currentUtterance.onerror = function(event) {
-          console.log('Speech error:', event);
-          isPlaying = false;
-          const btn = document.getElementById('reviewAudioBtn');
-          if (btn) { btn.textContent = '🔊 Read ↵'; btn.classList.remove('playing'); }
-          
-          // If error on mobile, show overlay
-          if (isMobile && (event.error === 'not-allowed' || event.error === 'synthesis-unavailable')) {
-            setTimeout(() => {
-              if (!isPlaying && audioOverlay) {
-                audioOverlay.classList.add('show');
-                audioOverlay.style.display = 'flex';
-              }
-            }, 500);
-          }
-        };
-        
-        isPlaying = true;
-        speechSynth.speak(currentUtterance);
-      }
-
-      function reviewStopSpeech() {
-        if (speechSynth) speechSynth.cancel();
-        isPlaying = false;
-        currentUtterance = null;
-        const btn = document.getElementById('reviewAudioBtn');
-        if (btn) { btn.textContent = '🔊 Read ↵'; btn.classList.remove('playing'); }
-      }
-
-      // Touch events for review
-      if (currentWrapper) {
-        currentWrapper.addEventListener('touchstart', function(e) {
-          if (!currentImg) return;
-          const touches = e.touches;
-          if (touches.length === 1) {
-            if (zoomLevel > 1) {
-              isTouching = true;
-              touchStartX = touches[0].clientX;
-              touchStartY = touches[0].clientY;
-              touchStartPanX = panX;
-              touchStartPanY = panY;
-            }
-          } else if (touches.length === 2) {
-            const dx = touches[0].clientX - touches[1].clientX;
-            const dy = touches[0].clientY - touches[1].clientY;
-            touchZoomStart = Math.sqrt(dx*dx + dy*dy);
-            isTouching = true;
-          }
-          e.preventDefault();
-        }, { passive: false });
-
-        currentWrapper.addEventListener('touchmove', function(e) {
-          if (!currentImg || !isTouching) return;
-          const touches = e.touches;
-          if (touches.length === 1 && zoomLevel > 1) {
-            const dx = touches[0].clientX - touchStartX;
-            const dy = touches[0].clientY - touchStartY;
-            panX = touchStartPanX + dx;
-            panY = touchStartPanY + dy;
-            currentImg.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomLevel})`;
-          } else if (touches.length === 2) {
-            const dx = touches[0].clientX - touches[1].clientX;
-            const dy = touches[0].clientY - touches[1].clientY;
-            const distance = Math.sqrt(dx*dx + dy*dy);
-            const delta = (distance - touchZoomStart) / 200;
-            zoomLevel = Math.min(Math.max(zoomLevel + delta, 0.3), 4);
-            touchZoomStart = distance;
-            currentImg.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomLevel})`;
-          }
-          e.preventDefault();
-        }, { passive: false });
-
-        currentWrapper.addEventListener('touchend', function(e) {
-          isTouching = false;
-          if (e.changedTouches.length === 1 && zoomLevel === 1) {
-            zoomLevel = 1.5;
-            if (currentImg) {
-              currentImg.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomLevel})`;
-            }
-          }
-        }, { passive: false });
-      }
-
+      // Start at page 0
       renderReviewPage(0);
 
       if (availableVoices.length > 0) {
@@ -2144,6 +2225,149 @@
           populateReviewVoices();
         };
       }
+    }
+
+    // ===== REVIEW AUDIO FUNCTIONS (GLOBAL) =====
+    window.reviewZoomImage = function(delta) {
+      if (!currentImg) return;
+      zoomLevel = Math.min(Math.max(zoomLevel + delta, 0.3), 4);
+      currentImg.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomLevel})`;
+      currentImg.style.transformOrigin = 'center center';
+      if (zoomLevel > 1) {
+        currentImg.classList.add('zoomed');
+      } else {
+        currentImg.classList.remove('zoomed');
+      }
+    };
+
+    window.reviewResetZoom = function() {
+      zoomLevel = 1;
+      panX = 0;
+      panY = 0;
+      if (currentImg) {
+        currentImg.style.transform = `translate(0px, 0px) scale(1)`;
+        currentImg.style.transformOrigin = 'center center';
+        currentImg.classList.remove('zoomed');
+      }
+    };
+
+    window.reviewToggleAudio = function() {
+      const btn = document.getElementById('reviewAudioBtn');
+      if (!btn) return;
+      
+      if (isMobile && !audioEnabled) {
+        enableMobileAudio();
+        if (audioOverlay) {
+          audioOverlay.classList.add('show');
+          audioOverlay.style.display = 'flex';
+          return;
+        }
+      }
+      
+      if (isPlaying) {
+        reviewStopSpeech();
+        btn.textContent = '🔊 Read ↵';
+        btn.classList.remove('playing');
+      } else {
+        reviewStartSpeech();
+        btn.textContent = '⏹ Stop ↵';
+        btn.classList.add('playing');
+      }
+    };
+
+    window.reviewChangeVoice = function(voiceName) {
+      selectedVoiceName = voiceName;
+      if (isPlaying) {
+        reviewStopSpeech();
+        setTimeout(reviewStartSpeech, 100);
+      }
+    };
+
+    function updateAudioLock(playing) {
+      const reviewPrevBtn = document.getElementById('reviewPrevBtn');
+      const reviewNextBtn = document.getElementById('reviewNextBtn');
+      const audioIndicator = document.getElementById('audioPlayingIndicator');
+      
+      if (reviewPrevBtn) {
+        if (playing) {
+          reviewPrevBtn.classList.add('audio-locked');
+        } else {
+          reviewPrevBtn.classList.remove('audio-locked');
+        }
+      }
+      if (reviewNextBtn) {
+        if (playing) {
+          reviewNextBtn.classList.add('audio-locked');
+        } else {
+          reviewNextBtn.classList.remove('audio-locked');
+        }
+      }
+      if (audioIndicator) {
+        if (playing) {
+          audioIndicator.classList.add('active');
+        } else {
+          audioIndicator.classList.remove('active');
+        }
+      }
+    }
+
+    function reviewStartSpeech() {
+      if (!window.speechSynthesis) {
+        alert('Text-to-speech is not supported in this browser.');
+        return;
+      }
+      
+      if (isMobile) {
+        enableMobileAudio();
+      }
+      
+      reviewStopSpeech();
+      
+      const text = currentText || 'No text available.';
+      currentUtterance = new SpeechSynthesisUtterance(text);
+      currentUtterance.lang = 'en-US';
+      currentUtterance.rate = 0.85;
+      currentUtterance.pitch = 1;
+      currentUtterance.volume = 1;
+      
+      const voice = availableVoices.find(v => v.name === selectedVoiceName) || availableVoices[0];
+      if (voice) currentUtterance.voice = voice;
+      
+      currentUtterance.onend = function() {
+        isPlaying = false;
+        updateAudioLock(false);
+        const btn = document.getElementById('reviewAudioBtn');
+        if (btn) { btn.textContent = '🔊 Read ↵'; btn.classList.remove('playing'); }
+      };
+      currentUtterance.onerror = function(event) {
+        console.log('Speech error:', event);
+        isPlaying = false;
+        updateAudioLock(false);
+        const btn = document.getElementById('reviewAudioBtn');
+        if (btn) { btn.textContent = '🔊 Read ↵'; btn.classList.remove('playing'); }
+        
+        if (isMobile && (event.error === 'not-allowed' || event.error === 'synthesis-unavailable')) {
+          setTimeout(() => {
+            if (!isPlaying && audioOverlay) {
+              audioOverlay.classList.add('show');
+              audioOverlay.style.display = 'flex';
+            }
+          }, 500);
+        }
+      };
+      
+      isPlaying = true;
+      updateAudioLock(true);
+      speechSynth.speak(currentUtterance);
+    }
+
+    function reviewStopSpeech() {
+      if (speechSynth) speechSynth.cancel();
+      isPlaying = false;
+      currentUtterance = null;
+      updateAudioLock(false);
+      const btn = document.getElementById('reviewAudioBtn');
+      if (btn) { btn.textContent = '🔊 Read ↵'; btn.classList.remove('playing'); }
     }
 
     // ===== TEST MODE =====
@@ -2466,35 +2690,88 @@
       testContainer.classList.add('hidden-content');
       testContainer.classList.remove('active-content');
       
+      progressBadge.textContent = '📚 Ready';
+      progressBadge.className = 'progress-badge welcome-badge';
+      
       welcomeScreen.style.display = 'block';
       userNameInput.value = '';
       userNameInput.focus();
-      progressBadge.textContent = '1 / 50';
     }
 
-    // ===== KEYBOARD SHORTCUTS FOR TEST =====
+    // ===== KEYBOARD SHORTCUTS =====
     document.addEventListener('keydown', function(e) {
-      if (!testContainer.classList.contains('active-content')) return;
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
-      
-      if (e.key === 'ArrowLeft') { 
-        e.preventDefault();
-        prevBtn.click(); 
-      }
-      else if (e.key === 'ArrowRight') { 
-        e.preventDefault();
-        nextBtn.click(); 
-      }
-      else if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        if (currentIndex === idioms.length - 1) {
-          const submitExamBtn = document.getElementById('submitExamBtn');
-          if (submitExamBtn && submitExamBtn.style.display !== 'none') {
-            submitExamBtn.click();
-            return;
+      // REVIEW MODE SHORTCUTS
+      if (reviewContainer.classList.contains('active-content')) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+        
+        // Zoom shortcuts: + and - keys
+        if (e.key === '+' || e.key === '=') {
+          e.preventDefault();
+          if (!isPlaying && currentImg) {
+            reviewZoomImage(0.2);
+          }
+          return;
+        } else if (e.key === '-') {
+          e.preventDefault();
+          if (!isPlaying && currentImg) {
+            reviewZoomImage(-0.2);
+          }
+          return;
+        }
+        
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          if (isPlaying) return;
+          const reviewPrevBtn = document.getElementById('reviewPrevBtn');
+          if (reviewPrevBtn && !reviewPrevBtn.disabled) {
+            reviewPrevBtn.click();
+          }
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          if (isPlaying) return;
+          const reviewNextBtn = document.getElementById('reviewNextBtn');
+          if (reviewNextBtn && !reviewNextBtn.disabled) {
+            reviewNextBtn.click();
+          }
+        } else if (e.key === ' ' || e.key === 'Space' || e.key === 'Enter') {
+          e.preventDefault();
+          const audioBtn = document.getElementById('reviewAudioBtn');
+          if (audioBtn) {
+            if (isPlaying) {
+              reviewStopSpeech();
+              audioBtn.textContent = '🔊 Read ↵';
+              audioBtn.classList.remove('playing');
+            } else {
+              reviewStartSpeech();
+              audioBtn.textContent = '⏹ Stop ↵';
+              audioBtn.classList.add('playing');
+            }
           }
         }
-        submitAnswerBtn.click();
+        return;
+      }
+      
+      // TEST MODE SHORTCUTS
+      if (testContainer.classList.contains('active-content')) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+        
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          prevBtn.click();
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          nextBtn.click();
+        } else if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          if (currentIndex === idioms.length - 1) {
+            const submitExamBtn = document.getElementById('submitExamBtn');
+            if (submitExamBtn && submitExamBtn.style.display !== 'none') {
+              submitExamBtn.click();
+              return;
+            }
+          }
+          submitAnswerBtn.click();
+        }
       }
     });
 
@@ -2518,10 +2795,8 @@
       // Voices are ready
     });
 
-    // Check for mobile audio after a short delay
     setTimeout(checkMobileAudio, 500);
 
-    // Show welcome screen initially
     welcomeScreen.style.display = 'block';
     reviewContainer.classList.add('hidden-content');
     reviewContainer.classList.remove('active-content');
