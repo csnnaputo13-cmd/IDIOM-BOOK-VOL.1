@@ -183,8 +183,8 @@ If you find this project helpful, please consider:
 ## 📧 Contact
 
 For questions, feedback, or support:
-- **GitHub:** [Your GitHub Username]
-- **Email:** [Your Email Address]
+- **GitHub:** csnnaputo13-cmd
+- **Email:** csn.naputo13@gmail.com
 
 ---
 
