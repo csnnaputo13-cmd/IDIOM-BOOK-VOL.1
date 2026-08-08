@@ -201,7 +201,3 @@ For questions, feedback, or support:
 *"Mastering idioms is the key to sounding like a native English speaker."*
 
 **CSN - Christopher S. Naputo Reviewer: All Rights Reserved** 📘
-
-
-
-## 📁 Project Structure
